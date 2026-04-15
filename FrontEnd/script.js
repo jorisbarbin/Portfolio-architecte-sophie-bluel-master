@@ -6,3 +6,9 @@ fetch("http://localhost:5678/api/works")
     .catch((error) => {
         console.error("Ça ne fonctionne pas:", error);
     });
+
+const gallery = document.querySelector(".gallery");
+
+gallery.innerHTML = "";
+
+console.log(gallery);
