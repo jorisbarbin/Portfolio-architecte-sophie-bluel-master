@@ -1,3 +1,6 @@
+const gallery = document.querySelector(".gallery");
+gallery.innerHTML = "";
+
 fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
     .then((data) => {
@@ -11,18 +14,11 @@ fetch("http://localhost:5678/api/works")
         figure.appendChild(image);
         figure.appendChild(figcaption);
         gallery.appendChild(figure);
-
-        console.log("Ça fonctionne:", data[i]);
     }})
-    .catch((error) => {
-        console.error("Ça ne fonctionne pas:", error);
-    });
 
-const gallery = document.querySelector(".gallery");
 
-gallery.innerHTML = "";
 
-console.log(gallery);
+
 
 
 
