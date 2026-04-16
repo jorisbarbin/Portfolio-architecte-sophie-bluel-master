@@ -3,22 +3,33 @@ gallery.innerHTML = "";
 const filters = document.querySelector(".filters");
 filters.innerHTML = "";
 
+
 fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
     .then((data) => {
+
         let buttonAll = document.createElement("button");
         buttonAll.textContent = "Tous";
-        buttonAll.setAttribute("category-data-id", "all");
+        buttonAll.setAttribute("data-category-id", "all");
         filters.appendChild(buttonAll);
         for (let i = 0; i < data.length; i++) {
             let button = document.createElement("button");
             button.textContent = data[i].name;
-            button.setAttribute("category-data-id", data[i].id);
+            button.setAttribute("data-category-id", data[i].id);
             filters.appendChild(button);
+            button.addEventListener("click", () => {
+            console.log(button.getAttribute("data-category-id"))}
+            )
         }
-        console.log("Categories ok:", data);
-    })
+            buttonAll.addEventListener("click", () => {
+            console.log(buttonAll.getAttribute("data-category-id"))}
+            )
 
+
+
+        console.log("Categories ok:", data);        
+
+    })
 
 fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
