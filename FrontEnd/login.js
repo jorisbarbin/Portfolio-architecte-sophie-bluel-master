@@ -8,22 +8,29 @@ loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
     emailValue = emailInput.value;
     passwordValue = passwordInput.value;
-
     fetch("http://localhost:5678/api/users/login", {
-    method: "POST",
-    body: JSON.stringify({
+        method: "POST",
+        body: JSON.stringify({
         "email": emailValue,
         "password": passwordValue
     }),
         headers: {
         "Content-Type": "application/json"
-    },
-})
+    }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if (data.token) {
+            console.log("Connexion réussie !");
+            sessionStorage.setItem("token", data.token);
+            window.location.href = "index.html";
+        } else {
+            alert("Identifiants incorrects. Veuillez réessayer.");
 
-    console.log(emailValue);
-    console.log(passwordValue);
-});
+}})})
+    
 
-//Identifiants stockés pour les tests de connexion//
-//sophie.bluel@test.tld//
-//S0phie//
+    
+
+
+//Identifiants stockés pour les tests de connexion : sophie.bluel@test.tld, S0phie//
