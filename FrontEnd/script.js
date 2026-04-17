@@ -32,6 +32,14 @@ fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
     .then((data) => {
         dataFilters = data;
+        filters.innerHTML = "";
+        if (sessionStorage.getItem("token")) {
+            console.log("connecté");
+        } else {
+            AfficherFilters(dataFilters);
+            console.log("non connecté");
+    }})
+        function AfficherFilters(dataFilters) {
         let buttonAll = document.createElement("button");
         buttonAll.textContent = "Tous";
         buttonAll.setAttribute("data-category-id", "all");
@@ -45,16 +53,11 @@ fetch("http://localhost:5678/api/categories")
 
         button.addEventListener("click", () => {
             let categoryId = button.getAttribute("data-category-id");
-            AfficherGallery(dataWorks.filter(work => work.categoryId == categoryId));
-        console.log(button.getAttribute("data-category-id"))}
-            )}
+            AfficherGallery(dataWorks.filter(work => work.categoryId == categoryId));})
+        }
+
 
         buttonAll.addEventListener("click", () => {
             AfficherGallery(dataWorks);
-        })})
-
-        if (sessionStorage.getItem("token")) {
-            console.log("connecté");
-        } else {
-            console.log("non connecté");
-        }
+        })
+    }
