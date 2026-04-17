@@ -2,6 +2,7 @@ let gallery = document.querySelector(".gallery");
 gallery.innerHTML = "";
 const filters = document.querySelector(".filters");
 filters.innerHTML = "";
+const loginLink = document.querySelector("#login-link");
 let dataWorks = [];
 let dataFilters = [];
 
@@ -34,6 +35,7 @@ fetch("http://localhost:5678/api/categories")
         dataFilters = data;
         filters.innerHTML = "";
         if (sessionStorage.getItem("token")) {
+            loginLink.textContent = "Logout";
             console.log("connecté");
         } else {
             AfficherFilters(dataFilters);
@@ -61,3 +63,5 @@ fetch("http://localhost:5678/api/categories")
             AfficherGallery(dataWorks);
         })
     }
+
+    console.log(loginLink);
