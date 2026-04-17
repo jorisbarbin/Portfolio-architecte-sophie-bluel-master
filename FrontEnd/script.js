@@ -5,6 +5,7 @@ filters.innerHTML = "";
 let dataWorks = [];
 let dataFilters = [];
 
+
 fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
     .then((data) => {
@@ -52,5 +53,8 @@ fetch("http://localhost:5678/api/categories")
             AfficherGallery(dataWorks);
         })})
 
-
-
+        if (sessionStorage.getItem("token")) {
+            console.log("connecté");
+        } else {
+            console.log("non connecté");
+        }
