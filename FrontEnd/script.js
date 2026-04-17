@@ -4,6 +4,7 @@ const filters = document.querySelector(".filters");
 filters.innerHTML = "";
 const loginLink = document.querySelector("#login-link");
 const EditionMode = document.querySelector("#EditionMode");
+const ButtonModifier = document.querySelector("#ButtonModifier");
 
 
 let dataWorks = [];
@@ -37,10 +38,8 @@ fetch("http://localhost:5678/api/categories")
         filters.innerHTML = "";
         if (sessionStorage.getItem("token")) {
             loginLink.textContent = "Logout";
-
-
             EditionMode.textContent = "Mode édition";
-
+            ButtonModifier.textContent = "Modifier";
             console.log("connecté");
         } else {
             AfficherFilters(dataFilters);
