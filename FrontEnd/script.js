@@ -3,6 +3,9 @@ gallery.innerHTML = "";
 const filters = document.querySelector(".filters");
 filters.innerHTML = "";
 const loginLink = document.querySelector("#login-link");
+const EditionMode = document.querySelector("#EditionMode");
+
+
 let dataWorks = [];
 let dataFilters = [];
 
@@ -25,8 +28,6 @@ fetch("http://localhost:5678/api/works")
         figure.appendChild(image);
         figure.appendChild(figcaption);
         gallery.appendChild(figure);
-
-        
     }}
 
 fetch("http://localhost:5678/api/categories")
@@ -36,6 +37,10 @@ fetch("http://localhost:5678/api/categories")
         filters.innerHTML = "";
         if (sessionStorage.getItem("token")) {
             loginLink.textContent = "Logout";
+
+
+            EditionMode.textContent = "Mode édition";
+
             console.log("connecté");
         } else {
             AfficherFilters(dataFilters);

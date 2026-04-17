@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ol, ul, link {
 	list-style: none;
 }
 blockquote, q {
@@ -98,6 +98,7 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -261,3 +262,19 @@ footer nav ul {
 	padding: 0;
 	margin: 20px auto 0 auto;
 }
+
+
+#EditionMode {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #000000;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	z-index: 1000;
+}	
+
