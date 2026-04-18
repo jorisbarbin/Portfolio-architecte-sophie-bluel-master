@@ -5,7 +5,7 @@ filters.innerHTML = "";
 const loginLink = document.querySelector("#login-link");
 const EditionMode = document.querySelector("#EditionMode");
 const ButtonModifier = document.querySelector("#ButtonModifier");
-
+ButtonModifier.style.display = "none";
 
 let dataWorks = [];
 let dataFilters = [];
@@ -40,6 +40,7 @@ fetch("http://localhost:5678/api/categories")
             loginLink.textContent = "Logout";
             EditionMode.textContent = "Mode édition";
             ButtonModifier.textContent = "Modifier";
+            ButtonModifier.style.display = "block";
             console.log("connecté");
         } else {
             AfficherFilters(dataFilters);
