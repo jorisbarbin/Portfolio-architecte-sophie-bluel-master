@@ -7,6 +7,7 @@ const EditionMode = document.querySelector("#EditionMode");
 EditionMode.style.display = "none";
 const ModifierBlock = document.querySelector(".modifier-block")
 ModifierBlock.style.display = "none"
+const ModaleEdition = document.querySelector("#ModaleEdition")
 
 let dataWorks = [];
 let dataFilters = [];
@@ -43,11 +44,17 @@ console.log(sessionStorage)
             EditionMode.textContent = "Mode édition";
             EditionMode.style.display = "block";
             ModifierBlock.style.display = "flex";
+            
 console.log("connecté");
         loginLink.addEventListener("click", (event) => {
             event.preventDefault();
             sessionStorage.removeItem("token");
             window.location.reload();
+        })
+        ModifierBlock.addEventListener("click", (event) => {
+            event.preventDefault()
+            ModaleEdition.style.display = "block";
+            console.log(ModaleEdition)
         })
         } else {
             AfficherFilters(dataFilters);
