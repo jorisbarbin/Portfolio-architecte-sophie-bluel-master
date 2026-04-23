@@ -54,6 +54,7 @@ console.log("connecté");
         ModifierBlock.addEventListener("click", (event) => {
             event.preventDefault()
             ModaleEdition.style.display = "block";
+            ModaleEdition.textContent = "Galerie photo"
             console.log(ModaleEdition)
         })
         } else {
