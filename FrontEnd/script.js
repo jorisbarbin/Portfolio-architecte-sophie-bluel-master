@@ -6,8 +6,12 @@ const loginLink = document.querySelector("#login-link");
 const EditionMode = document.querySelector("#EditionMode");
 EditionMode.style.display = "none";
 const ModifierBlock = document.querySelector(".modifier-block")
-ModifierBlock.style.display = "none"
+ModifierBlock.style.display = "none";
 const ModaleEdition = document.querySelector("#ModaleEdition")
+ModaleEdition.style.display = "none";
+const Xmark = document.querySelector("#Xmark");
+const Overlay = document.querySelector("#Overlay")
+Overlay.style.display = "none";
 
 let dataWorks = [];
 let dataFilters = [];
@@ -54,9 +58,24 @@ console.log("connecté");
         ModifierBlock.addEventListener("click", (event) => {
             event.preventDefault()
             ModaleEdition.style.display = "block";
-            ModaleEdition.textContent = "Galerie photo"
+            ModaleEdition.style.display = "block";
+            Overlay.style.display = "block";
             console.log(ModaleEdition)
         })
+        Xmark.addEventListener("click", (event) => {
+            event.preventDefault()
+            ModaleEdition.style.display = "none";
+            Overlay.style.display = "none";
+            console.log(event)
+        })
+        Overlay.addEventListener("click", (event) => {
+            event.preventDefault()
+            ModaleEdition.style.display = "none";
+            Overlay.style.display = "none";
+            console.log(event)
+        })
+
+        
         } else {
             AfficherFilters(dataFilters);
             console.log("non connecté");
