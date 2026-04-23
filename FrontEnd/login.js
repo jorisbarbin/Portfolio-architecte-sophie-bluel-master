@@ -24,13 +24,15 @@ loginForm.addEventListener("submit", (event) => {
             console.log("Connexion réussie !");
             sessionStorage.setItem("token", data.token);
             window.location.href = "index.html";
+            
         } else {
             alert("Identifiants incorrects. Veuillez réessayer.");
 
 }})})
-    
 
-    
+console.log(sessionStorage)
+
+
 
 
 //Identifiants stockés pour les tests de connexion : sophie.bluel@test.tld, S0phie//

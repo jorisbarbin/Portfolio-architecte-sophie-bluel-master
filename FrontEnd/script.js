@@ -5,8 +5,8 @@ filters.innerHTML = "";
 const loginLink = document.querySelector("#login-link");
 const EditionMode = document.querySelector("#EditionMode");
 EditionMode.style.display = "none";
-const ButtonModifier = document.querySelector("#ButtonModifier");
-ButtonModifier.style.display = "none";
+const ModifierBlock = document.querySelector(".modifier-block")
+ModifierBlock.style.display = "none"
 
 let dataWorks = [];
 let dataFilters = [];
@@ -39,11 +39,16 @@ fetch("http://localhost:5678/api/categories")
         filters.innerHTML = "";
         if (sessionStorage.getItem("token")) {
             loginLink.textContent = "Logout";
+console.log(sessionStorage)
             EditionMode.textContent = "Mode édition";
             EditionMode.style.display = "block";
-            ButtonModifier.textContent = "Modifier";
-            ButtonModifier.style.display = "block";
-            console.log("connecté");
+            ModifierBlock.style.display = "flex";
+console.log("connecté");
+        loginLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            sessionStorage.removeItem("token");
+            window.location.reload();
+        })
         } else {
             AfficherFilters(dataFilters);
             console.log("non connecté");
@@ -71,4 +76,5 @@ fetch("http://localhost:5678/api/categories")
         })
     }
 
-    console.log(loginLink);
+
+
