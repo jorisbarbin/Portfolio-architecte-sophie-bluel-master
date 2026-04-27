@@ -5,7 +5,7 @@ const ModifierBlock = document.querySelector(".modifier-block")
 ModifierBlock.style.display = "none";
 const ModaleEdition = document.querySelector("#ModaleEdition")
 ModaleEdition.style.display = "none";
-const Xmark = document.querySelector("#Xmark");
+const Xmark = document.querySelector(".fa-xmark");
 const Overlay = document.querySelector("#Overlay")
 Overlay.style.display = "none";
 
@@ -39,7 +39,6 @@ fetch("http://localhost:5678/api/categories")
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
         })
-
         
         } else {
             AfficherFilters(dataFilters);

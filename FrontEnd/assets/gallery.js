@@ -1,7 +1,10 @@
-let gallery = document.querySelector(".gallery");
+let gallery = document.querySelector("#gallery");
 gallery.innerHTML = "";
+let GalleryModale = document.querySelector("#GalleryModale");
+GalleryModale.innerHTML = "";
 const filters = document.querySelector(".filters");
 filters.innerHTML = "";
+
 
 let dataWorks = [];
 let dataFilters = [];
@@ -11,6 +14,7 @@ fetch("http://localhost:5678/api/works")
     .then((data) => {
         dataWorks = data;
         AfficherGallery(dataWorks);
+        AfficherGalleryModale(dataWorks)
     })
         function AfficherGallery(dataWorks) {
         gallery.innerHTML = "";
@@ -24,6 +28,22 @@ fetch("http://localhost:5678/api/works")
         figure.appendChild(image);
         figure.appendChild(figcaption);
         gallery.appendChild(figure);
+    }}
+        function AfficherGalleryModale(dataWorks) {
+        GalleryModale.innerHTML = "";
+        for (let i = 0; i < dataWorks.length; i++) {
+        let figureModale = document.createElement("figure");
+        let imageModale = document.createElement("img");
+        imageModale.setAttribute("src", dataWorks[i].imageUrl);
+        imageModale.setAttribute("alt", dataWorks[i].title);
+        let trashIcon = document.createElement("i");
+        trashIcon.classList.add("fa-solid", "fa-trash-can");
+        figureModale.appendChild(trashIcon);
+        trashIcon.classList.add("modal-trash");
+        figureModale.appendChild(imageModale);
+        GalleryModale.appendChild(figureModale);
+
+
     }}
 
         function AfficherFilters(dataFilters) {
@@ -42,9 +62,11 @@ fetch("http://localhost:5678/api/works")
             let categoryId = button.getAttribute("data-category-id");
             AfficherGallery(dataWorks.filter(work => work.categoryId == categoryId));})
         }
-
-
+        
         buttonAll.addEventListener("click", () => {
             AfficherGallery(dataWorks);
         })
+       
+        
+        
     }
