@@ -42,12 +42,24 @@ fetch("http://localhost:5678/api/works")
         trashIcon.classList.add("modal-trash");
         figureModale.appendChild(imageModale);
         GalleryModale.appendChild(figureModale);
-
-        trashIcon.addEventListener("click", (event) => {
-            event.preventDefault()
-            console.log(dataWorks[i].id)
-        })
-    }}
+        
+trashIcon.addEventListener("click", (event) => {
+        event.preventDefault();
+        const workId = dataWorks[i].id;
+        const token = sessionStorage.getItem("token");
+    fetch(`http://localhost:5678/api/works/${workId}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then((response) => {
+        dataWorks = dataWorks.filter(work => work.id !== workId);
+        AfficherGallery(dataWorks);
+        AfficherGalleryModale(dataWorks);
+        console.log(response);
+    });
+})}};
 
         function AfficherFilters(dataFilters) {
         let buttonAll = document.createElement("button");

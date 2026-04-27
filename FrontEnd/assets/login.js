@@ -31,8 +31,3 @@ loginForm.addEventListener("submit", (event) => {
 }})})
 
 console.log(sessionStorage)
-
-
-
-
-//Identifiants stockés pour les tests de connexion : sophie.bluel@test.tld, S0phie//
