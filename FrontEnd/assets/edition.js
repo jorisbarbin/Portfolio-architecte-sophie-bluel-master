@@ -28,18 +28,24 @@ fetch("http://localhost:5678/api/categories")
             event.preventDefault()
             ModaleEdition.style.display = "block";
             Overlay.style.display = "block";
+            sessionStorage.setItem("modalOpen", "true");
         })
         Xmark.addEventListener("click", (event) => {
             event.preventDefault()
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
+            sessionStorage.removeItem("modalOpen");
         })
         Overlay.addEventListener("click", (event) => {
             event.preventDefault()
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
+            sessionStorage.removeItem("modalOpen");
         })
-        
+        if (sessionStorage.getItem("modalOpen")) {
+            ModaleEdition.style.display = "block";
+            Overlay.style.display = "block";
+}
         } else {
             AfficherFilters(dataFilters);
     }})

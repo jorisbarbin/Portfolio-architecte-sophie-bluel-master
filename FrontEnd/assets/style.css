@@ -180,14 +180,6 @@ nav li a:hover {
 	width: 100%;
 }
 
-#GalleryModale {
-	width: 100%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-}
-
 #GalleryModale img {
 	width: 100%;
 }
@@ -333,19 +325,23 @@ footer nav ul {
 }	
 
 #ModaleEdition {
+	position: relative;
 	overflow: auto;
 	position: fixed;
 	top: 50%;
 	left: 50%;
-
-	width: 630px;
+	width: 50%;
 	transform: translate(-50%, -50%);
 	background-color: white;
 	border-radius: 10px;
-	padding: 20px;
+	padding-left: 120px;
+	padding-right: 120px;
+	padding-bottom: 50px;
+	padding-top: 20px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	z-index: 11;
 	display: none;
+
 }	
 
 #ModaleEdition h3 {
@@ -353,21 +349,44 @@ footer nav ul {
 	font-family: 'Work Sans', 'Regular';
 	font-weight: 400;
 	font-size: 30px;
+	margin: 40px;
 	color: black;
 }
 
-#ModaleEdition button {
+.modale-button-add {
 	display: flex;
-	justify-items: center;
+	justify-content: center;
 }
 
-.fa-xmark {
+#ModaleEdition button {
+	font-family: 'Syne';
+	font-weight: 700;
+	color:#FFFFFF;
+	background-color: #1D6154;
+	border-radius: 60px;
+	padding: 8px 60px;
 	cursor: pointer;
 }
 
+.fa-xmark {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+#GalleryModale {
+	display: grid;
+	grid-template-columns: repeat(5, 77px);
+	gap: 20px 10px;
+	justify-content: center;
+}
+
+
+
 #GalleryModale figure {
 	position: relative;
-	max-width: 77px;
+	width: 77px;
 }
 
 #GalleryModale .modal-trash {
@@ -383,11 +402,16 @@ footer nav ul {
 	align-items: center;
 	justify-content: center;
 	color: #FFFFFF;
-	height: 20px;
-	width: 20px;
 	border-radius: 2px;
 	background-color: black;
+	height: 20px;
+	width: 20px;
 }
 
-
+.modale-separator {
+	width: 100%;
+	height: 1px;
+	background-color: #B3B3B3;
+	margin: 70px 0 40px 0;
+}
 
