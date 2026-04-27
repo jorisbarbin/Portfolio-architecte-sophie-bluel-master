@@ -43,7 +43,10 @@ fetch("http://localhost:5678/api/works")
         figureModale.appendChild(imageModale);
         GalleryModale.appendChild(figureModale);
 
-
+        trashIcon.addEventListener("click", (event) => {
+            event.preventDefault()
+            console.log(dataWorks[i].id)
+        })
     }}
 
         function AfficherFilters(dataFilters) {
