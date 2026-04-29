@@ -1,12 +1,13 @@
 const loginLink = document.querySelector("#login-link");
 const EditionMode = document.querySelector("#EditionMode");
 EditionMode.style.display = "none";
-const ModifierBlock = document.querySelector(".modifier-block")
+const ModifierBlock = document.querySelector(".modifier-block");
 ModifierBlock.style.display = "none";
-const ModaleEdition = document.querySelector("#ModaleEdition")
+const ModaleEdition = document.querySelector("#ModaleEdition");
 ModaleEdition.style.display = "none";
-const Xmark = document.querySelector(".fa-xmark");
-const Overlay = document.querySelector("#Overlay")
+const XmarkGalleryView = document.querySelector("#XmarkGalleryView");
+const XmarkModaleForm = document.querySelector("#XmarkModaleForm");
+const Overlay = document.querySelector("#Overlay");
 Overlay.style.display = "none";
 const ModaleForm = document.querySelector("#ModaleForm");
 ModaleForm.style.display = "none";
@@ -35,7 +36,7 @@ fetch("http://localhost:5678/api/categories")
             Overlay.style.display = "block";
             sessionStorage.setItem("modalOpen", "true");
         })
-        Xmark.addEventListener("click", (event) => {
+        XmarkGalleryView.addEventListener("click", (event) => {
             event.preventDefault()
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
@@ -61,6 +62,15 @@ fetch("http://localhost:5678/api/categories")
             event.preventDefault()
             ModaleGalleryView.style.display = "block";
             ModaleForm.style.display = "none";
+        })
+        XmarkModaleForm.addEventListener("click", (event) => {
+            event.preventDefault()
+            ModaleEdition.style.display = "none";
+            Overlay.style.display = "none";
+            ModaleForm.style.display = "none";
+            ModaleGalleryView.style.display = "block";
+            sessionStorage.removeItem("modalOpen");
+            console.log(event)
         })
         if (sessionStorage.getItem("modalOpen")) {
             ModaleEdition.style.display = "block";
