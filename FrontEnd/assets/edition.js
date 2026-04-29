@@ -101,6 +101,16 @@ fetch("http://localhost:5678/api/categories")
             dataWorks.push(newWork);
             AfficherGallery(dataWorks);
             AfficherGalleryModale(dataWorks);
+            ModaleForm.style.display = "none";
+            ModaleGalleryView.style.display = "block";
+            imageUpload.value = "";
+            titleForm.value = "";
+            CategorieForm.value = "";
+            imagePreview.classList.remove("visible");
+            imagePreview.src = "";
+            IconImage.style.display = "block";
+            fileLabel.style.display = "block";
+            fileHelp.style.display = "block";
         })
         })
         if (sessionStorage.getItem("modalOpen")) {
