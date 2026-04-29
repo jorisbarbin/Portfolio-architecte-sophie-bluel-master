@@ -62,12 +62,13 @@
 		<i class="fa-solid fa-arrow-left"></i>
 		<i id="XmarkModaleForm" class="fa-solid fa-xmark"></i>
 		<h3>Ajout photo</h3>
-		<div class="rectangle-add-picture">
-			<i class="fa-regular fa-image"></i>
-			<label for="imageUpload" class="file-label">+ Ajouter photo</label>
-			<input type="file" name="image" id="imageUpload" accept=".jpg,.jpeg,.png">
-			<p>jpg, png : 4mo max</p>
-		</div>
+	<div class="rectangle-add-picture">
+		<i class="fa-regular fa-image" id="IconImage"></i>
+		<label for="imageUpload" class="file-label">+ Ajouter photo</label>
+		<input type="file" name="image" id="imageUpload" accept=".jpg,.jpeg,.png">
+		<p id="fileHelp">jpg, png : 4mo max</p>
+		<img id="imagePreview" alt="Aperçu de l'image">
+	</div>
 		<form id="FormAddPics" action="#" method="post">
 			<label for="title">Titre</label>
 			<input type="text" name="title" id="titleForm">

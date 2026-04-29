@@ -18,6 +18,10 @@ const FormAddPics = document.querySelector("#FormAddPics");
 const imageUpload = document.querySelector("#imageUpload");
 const titleForm = document.querySelector("#titleForm");
 const CategorieForm = document.querySelector("#CategorieForm");
+const imagePreview = document.querySelector("#imagePreview");
+const IconImage = document.querySelector("#IconImage");
+const fileHelp = document.querySelector("#fileHelp");
+const fileLabel = document.querySelector(".file-label");
 
 
 
@@ -118,3 +122,15 @@ fetch("http://localhost:5678/api/categories")
             CategorieForm.appendChild(option);
         }
     }
+
+    imageUpload.addEventListener("change", () => {
+	const file = imageUpload.files[0];
+	if (file) {
+		const previewUrl = URL.createObjectURL(file);
+		imagePreview.src = previewUrl;
+		imagePreview.classList.add("visible");
+		IconImage.style.display = "none";
+		fileLabel.style.display = "none";
+		fileHelp.style.display = "none";
+	}
+});

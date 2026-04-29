@@ -519,3 +519,14 @@ footer nav ul {
 #ModaleForm p {
 	color: #B9C5CC;
 }
+
+#imagePreview {
+	display: none;
+	max-height: 169px;
+	max-width: 100%;
+	object-fit: cover;
+}
+
+#imagePreview.visible {
+	display: block;
+}
