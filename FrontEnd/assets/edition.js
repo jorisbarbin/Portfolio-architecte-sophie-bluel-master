@@ -78,13 +78,26 @@ fetch("http://localhost:5678/api/categories")
             ModaleGalleryView.style.display = "block";
             sessionStorage.removeItem("modalOpen");
         })
-        
         FormAddPics.addEventListener("submit", (event) => {
             event.preventDefault();
-            
-            console.log(imageUpload.files[0]);
-            console.log(titleForm.value);
-            console.log(CategorieForm.value);
+            const token = sessionStorage.getItem("token");
+            const formData = new FormData();
+            formData.append("image", imageUpload.files[0]);
+            formData.append("title", titleForm.value);
+            formData.append("category", CategorieForm.value);
+        fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            body: formData
+        })
+        .then((response) => response.json())
+        .then((newWork) => {
+            dataWorks.push(newWork);
+            AfficherGallery(dataWorks);
+            AfficherGalleryModale(dataWorks);
+        })
         })
         if (sessionStorage.getItem("modalOpen")) {
             ModaleEdition.style.display = "block";
@@ -98,10 +111,10 @@ fetch("http://localhost:5678/api/categories")
         function remplirCategoriesSelect(dataFilters) {
             CategorieForm.innerHTML = "";
 
-            for (let i = 0; i < dataFilters.length; i++) {
-                let option = document.createElement("option");
-                option.value = dataFilters[i].id;
-                option.textContent = dataFilters[i].name;
-                CategorieForm.appendChild(option);
-            }
+        for (let i = 0; i < dataFilters.length; i++) {
+            let option = document.createElement("option");
+            option.value = dataFilters[i].id;
+            option.textContent = dataFilters[i].name;
+            CategorieForm.appendChild(option);
         }
+    }
