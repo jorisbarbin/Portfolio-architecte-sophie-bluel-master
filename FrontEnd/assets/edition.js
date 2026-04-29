@@ -8,6 +8,11 @@ ModaleEdition.style.display = "none";
 const Xmark = document.querySelector(".fa-xmark");
 const Overlay = document.querySelector("#Overlay")
 Overlay.style.display = "none";
+const ModaleForm = document.querySelector("#ModaleForm");
+ModaleForm.style.display = "none";
+const buttonAddPicture = document.querySelector("#buttonAddPicture");
+const ModaleGalleryView = document.querySelector("#ModaleGalleryView");
+const ArrowModaleForm = document.querySelector(".fa-arrow-left");
 
 fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
@@ -34,13 +39,28 @@ fetch("http://localhost:5678/api/categories")
             event.preventDefault()
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
+            ModaleForm.style.display = "none";
+            ModaleGalleryView.style.display = "block";
             sessionStorage.removeItem("modalOpen");
+            console.log(event)
         })
         Overlay.addEventListener("click", (event) => {
             event.preventDefault()
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
+            ModaleForm.style.display = "none";
+            ModaleGalleryView.style.display = "block";
             sessionStorage.removeItem("modalOpen");
+        })
+        buttonAddPicture.addEventListener("click", (event) => {
+            event.preventDefault()
+            ModaleGalleryView.style.display = "none";
+            ModaleForm.style.display = "block";
+        })
+        ArrowModaleForm.addEventListener("click", (event) => {
+            event.preventDefault()
+            ModaleGalleryView.style.display = "block";
+            ModaleForm.style.display = "none";
         })
         if (sessionStorage.getItem("modalOpen")) {
             ModaleEdition.style.display = "block";

@@ -50,21 +50,28 @@
 
 		<div class="filters">
 		</div>
-		<div id="ModaleEdition">
+<div id="ModaleEdition">
+	<div id="ModaleGalleryView">
 			<i class="fa-solid fa-xmark"></i>
 			<h3>Galerie photo</h3>
-			
-			<div id="GalleryModale">
-			
-			</div>
-			<div class="modale-separator"></div>
-			<div class="modale-button-add">
-			<button id="buttonAddPicture">Ajouter une photo</button>
-			</div>
-		</div>
-		
-		<div id="gallery"></div>
-
+			<div id="GalleryModale"></div>
+		<div class="modale-separator"></div>
+		<div class="modale-button-add"><button id="buttonAddPicture">Ajouter une photo</button></div>
+	</div>
+	<div id="ModaleForm">
+		<i class="fa-solid fa-arrow-left"></i>
+		<i class="fa-solid fa-xmark"></i>
+		<h3>Ajout photo</h3>
+		<form action="#" method="post">
+			<label for="Titre">Nom</label>
+			<input type="text" name="title" id="title">
+			<label for="Categorie">Catégorie</label>
+			<input type="select" name="Categorie" id="Categorie">
+			<input type="submit" value="Envoyer">
+		</form>
+	</div>	
+</div>
+	<div id="gallery"></div>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>

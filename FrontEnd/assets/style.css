@@ -331,6 +331,7 @@ footer nav ul {
 	top: 50%;
 	left: 50%;
 	width: 50%;
+	max-width: 700px;
 	transform: translate(-50%, -50%);
 	background-color: white;
 	border-radius: 10px;
@@ -415,3 +416,6 @@ footer nav ul {
 	margin: 70px 0 40px 0;
 }
 
+#ModaleForm .fa-arrow-left{
+	cursor: pointer;
+}
