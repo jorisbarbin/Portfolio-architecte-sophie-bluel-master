@@ -14,11 +14,18 @@ ModaleForm.style.display = "none";
 const buttonAddPicture = document.querySelector("#buttonAddPicture");
 const ModaleGalleryView = document.querySelector("#ModaleGalleryView");
 const ArrowModaleForm = document.querySelector(".fa-arrow-left");
+const FormAddPics = document.querySelector("#FormAddPics");
+const imageUpload = document.querySelector("#imageUpload");
+const titleForm = document.querySelector("#titleForm");
+const CategorieForm = document.querySelector("#CategorieForm");
+
+
 
 fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
     .then((data) => {
         dataFilters = data;
+        remplirCategoriesSelect(dataFilters);
         filters.innerHTML = "";
         if (sessionStorage.getItem("token")) {
             loginLink.textContent = "Logout";
@@ -70,7 +77,14 @@ fetch("http://localhost:5678/api/categories")
             ModaleForm.style.display = "none";
             ModaleGalleryView.style.display = "block";
             sessionStorage.removeItem("modalOpen");
-            console.log(event)
+        })
+        
+        FormAddPics.addEventListener("submit", (event) => {
+            event.preventDefault();
+            
+            console.log(imageUpload.files[0]);
+            console.log(titleForm.value);
+            console.log(CategorieForm.value);
         })
         if (sessionStorage.getItem("modalOpen")) {
             ModaleEdition.style.display = "block";
@@ -79,3 +93,15 @@ fetch("http://localhost:5678/api/categories")
         } else {
             AfficherFilters(dataFilters);
     }})
+
+
+        function remplirCategoriesSelect(dataFilters) {
+            CategorieForm.innerHTML = "";
+
+            for (let i = 0; i < dataFilters.length; i++) {
+                let option = document.createElement("option");
+                option.value = dataFilters[i].id;
+                option.textContent = dataFilters[i].name;
+                CategorieForm.appendChild(option);
+            }
+        }
