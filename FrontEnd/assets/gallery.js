@@ -43,22 +43,31 @@ fetch("http://localhost:5678/api/works")
         figureModale.appendChild(imageModale);
         GalleryModale.appendChild(figureModale);
         
-trashIcon.addEventListener("click", (event) => {
-        event.preventDefault();
-        const workId = dataWorks[i].id;
-        const token = sessionStorage.getItem("token");
-    fetch(`http://localhost:5678/api/works/${workId}`, {
-        method: "DELETE",
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    })
-    .then((response) => {
-        dataWorks = dataWorks.filter(work => work.id !== workId);
-        AfficherGallery(dataWorks);
-        AfficherGalleryModale(dataWorks);
-        console.log(response);
-    });
+        trashIcon.addEventListener("click", (event) => {
+            event.preventDefault();
+            const confirmation = confirm("Voulez-vous vraiment supprimer ce projet ?");
+            if (!confirmation) {
+                return;
+            }
+            const workId = dataWorks[i].id;
+            const token = sessionStorage.getItem("token");
+            fetch(`http://localhost:5678/api/works/${workId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Erreur lors de la suppression.");
+                }
+                dataWorks = dataWorks.filter(work => work.id !== workId);
+                AfficherGallery(dataWorks);
+                AfficherGalleryModale(dataWorks);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 })}};
 
         function AfficherFilters(dataFilters) {

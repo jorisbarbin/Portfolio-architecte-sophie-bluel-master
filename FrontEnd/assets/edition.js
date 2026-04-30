@@ -22,6 +22,7 @@ const imagePreview = document.querySelector("#imagePreview");
 const IconImage = document.querySelector("#IconImage");
 const fileHelp = document.querySelector("#fileHelp");
 const fileLabel = document.querySelector(".file-label");
+const formAddError = document.querySelector("#formAddError");
 
 
 
@@ -84,6 +85,20 @@ fetch("http://localhost:5678/api/categories")
         })
         FormAddPics.addEventListener("submit", (event) => {
             event.preventDefault();
+            const imageFile = imageUpload.files[0];
+            const titleValue = titleForm.value.trim();
+            formAddError.style.display = "none";
+            formAddError.textContent = "";
+            if (!imageFile) {
+                formAddError.textContent = "Veuillez ajouter une image.";
+                formAddError.style.display = "block";
+                return;
+            }
+            if (!titleValue) {
+                formAddError.textContent = "Veuillez renseigner un titre.";
+                formAddError.style.display = "block";
+                return;
+            }
             const token = sessionStorage.getItem("token");
             const formData = new FormData();
             formData.append("image", imageUpload.files[0]);
