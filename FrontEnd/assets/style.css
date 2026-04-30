@@ -537,3 +537,24 @@ footer nav ul {
 	margin-bottom: 15px;
 	display: none;
 }
+
+#DeleteConfirmBox {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 25px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.2);
+	z-index: 30;
+	text-align: center;
+}
+
+.confirm-actions {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 20px;
+}

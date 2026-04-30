@@ -87,6 +87,7 @@ fetch("http://localhost:5678/api/categories")
             event.preventDefault();
             const imageFile = imageUpload.files[0];
             const titleValue = titleForm.value.trim();
+            const categoryValue = CategorieForm.value;
             formAddError.style.display = "none";
             formAddError.textContent = "";
             if (!imageFile) {
@@ -96,6 +97,11 @@ fetch("http://localhost:5678/api/categories")
             }
             if (!titleValue) {
                 formAddError.textContent = "Veuillez renseigner un titre.";
+                formAddError.style.display = "block";
+                return;
+            }
+            if (!categoryValue) {
+                formAddError.textContent = "Veuillez choisir une catégorie.";
                 formAddError.style.display = "block";
                 return;
             }
@@ -137,9 +143,12 @@ fetch("http://localhost:5678/api/categories")
     }})
 
 
-        function remplirCategoriesSelect(dataFilters) {
-            CategorieForm.innerHTML = "";
-
+    function remplirCategoriesSelect(dataFilters) {
+        CategorieForm.innerHTML = "";
+        let defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "";
+        CategorieForm.appendChild(defaultOption);
         for (let i = 0; i < dataFilters.length; i++) {
             let option = document.createElement("option");
             option.value = dataFilters[i].id;
