@@ -36,6 +36,14 @@ function resetAddPhotoForm() {
     formAddError.style.display = "none";
 }
 
+function closeModal() {
+    resetAddPhotoForm();
+    ModaleEdition.style.display = "none";
+    Overlay.style.display = "none";
+    ModaleForm.style.display = "none";
+    ModaleGalleryView.style.display = "block";
+}
+
 fetch("http://localhost:5678/api/categories")
     .then((response) => {
         if (!response.ok) {
@@ -65,19 +73,11 @@ fetch("http://localhost:5678/api/categories")
         })
         XmarkGalleryView.addEventListener("click", (event) => {
             event.preventDefault()
-            ModaleEdition.style.display = "none";
-            Overlay.style.display = "none";
-            ModaleForm.style.display = "none";
-            ModaleGalleryView.style.display = "block";
+            closeModal();
         })
         Overlay.addEventListener("click", (event) => {
             event.preventDefault()
-            resetAddPhotoForm();
-            ModaleEdition.style.display = "none";
-            Overlay.style.display = "none";
-            ModaleForm.style.display = "none";
-            ModaleGalleryView.style.display = "block";
-            
+            closeModal();            
         })
         buttonAddPicture.addEventListener("click", (event) => {
             event.preventDefault()
@@ -92,13 +92,18 @@ fetch("http://localhost:5678/api/categories")
         })
         XmarkModaleForm.addEventListener("click", (event) => {
             event.preventDefault()
-            resetAddPhotoForm();
-            ModaleEdition.style.display = "none";
-            Overlay.style.display = "none";
-            ModaleForm.style.display = "none";
-            ModaleGalleryView.style.display = "block";
-            
+            closeModal();            
         })
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                if (DeleteConfirmBox.style.display === "block") {
+                    DeleteConfirmBox.style.display = "none";
+                    workIdToDelete = null;
+                } else if (ModaleEdition.style.display === "block") {
+                    closeModal();
+                }
+            }
+        });
         FormAddPics.addEventListener("submit", (event) => {
             event.preventDefault();
             const imageFile = imageUpload.files[0];
