@@ -19,6 +19,9 @@ fetch("http://localhost:5678/api/works")
         AfficherGallery(dataWorks);
         AfficherGalleryModale(dataWorks)
     })
+        .catch((error) => {
+        console.error(error);
+        });
         function AfficherGallery(works) {
             gallery.innerHTML = "";
             for (let i = 0; i < works.length; i++) {
@@ -67,17 +70,14 @@ fetch("http://localhost:5678/api/works")
                 if (!response.ok) {
                     throw new Error("Erreur lors de la suppression.");
                 }
-
                 dataWorks = dataWorks.filter(work => work.id !== workIdToDelete);
-
                 AfficherGallery(dataWorks);
                 AfficherGalleryModale(dataWorks);
-
                 workIdToDelete = null;
                 DeleteConfirmBox.style.display = "none";
             })
             .catch((error) => {
-                console.error(error);
+            console.error(error);
             });
         });
 

@@ -34,7 +34,7 @@ fetch("http://localhost:5678/api/categories")
         filters.innerHTML = "";
         if (sessionStorage.getItem("token")) {
             loginLink.textContent = "Logout";
-            EditionMode.textContent = "Mode édition";
+            EditionMode.innerHTML = '<i class="fa-regular fa-pen-to-square"></i><span>Mode édition</span>';
             EditionMode.style.display = "block";
             ModifierBlock.style.display = "flex";
             loginLink.addEventListener("click", (event) => {
@@ -133,6 +133,9 @@ fetch("http://localhost:5678/api/categories")
             fileLabel.style.display = "block";
             fileHelp.style.display = "block";
         })
+        .catch((error) => {
+        console.error(error);
+        });
         })
         if (sessionStorage.getItem("modalOpen")) {
             ModaleEdition.style.display = "block";
@@ -141,6 +144,9 @@ fetch("http://localhost:5678/api/categories")
         } else {
             AfficherFilters(dataFilters);
     }})
+        .catch((error) => {
+        console.error(error);
+        });
 
 
     function remplirCategoriesSelect(dataFilters) {
