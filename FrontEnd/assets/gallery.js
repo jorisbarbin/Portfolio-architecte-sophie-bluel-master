@@ -60,6 +60,20 @@ fetch("http://localhost:5678/api/works")
                     DeleteConfirmBox.style.display = "block";
                 });
             }
+            document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                if (DeleteConfirmBox.style.display === "block") {
+                    DeleteConfirmBox.style.display = "none";
+                    workIdToDelete = null;
+                } else if (ModaleEdition.style.display === "block") {
+                    resetAddPhotoForm();
+                    ModaleEdition.style.display = "none";
+                    Overlay.style.display = "none";
+                    ModaleForm.style.display = "none";
+                    ModaleGalleryView.style.display = "block";
+                }
+            }
+        });
         }
 
         ConfirmDelete.addEventListener("click", () => {
