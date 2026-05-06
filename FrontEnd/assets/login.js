@@ -1,6 +1,8 @@
 const loginForm = document.querySelector('.style-form');
 const emailInput = document.querySelector('#email');
 const passwordInput = document.querySelector('#password');
+const LoginErrorModal = document.querySelector("#LoginErrorModal");
+const CloseLoginError = document.querySelector("#CloseLoginError");
 let emailValue = "";
 let passwordValue = "";
 
@@ -24,9 +26,11 @@ loginForm.addEventListener("submit", (event) => {
             console.log("Connexion réussie !");
             sessionStorage.setItem("token", data.token);
             window.location.href = "index.html";
-            
         } else {
-            alert("Identifiants incorrects. Veuillez réessayer.");
+            LoginErrorModal.style.display = "block";
+            CloseLoginError.addEventListener("click", () => {
+            LoginErrorModal.style.display = "none";
+});
 
 }})})
 

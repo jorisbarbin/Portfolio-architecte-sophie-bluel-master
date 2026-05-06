@@ -24,22 +24,12 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-#Overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.4);
-	z-index: 10;
-	display: none;
-}
-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 	min-height: 100vh;
@@ -48,74 +38,79 @@ body {
 ol, ul, link {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 /** end reset css**/
+/*STRUCTURE GLOBALE*/
+
 body {
 	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
-	font-size: 14px;
+	margin: auto;
+	padding-top: 40px;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	padding-top: 40px;
+	font-family: "Work Sans";
+	font-size: 14px;
 }
 
 main {
 	flex: 1;
 }
 
-header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
-}
-
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em;
-}
-
 section {
-	margin: 50px 0
-}
-
-h1{
-	display: flex;
-	flex-direction: column;
-	font-family: 'Syne';
-	font-size: 22px;
-	font-weight: 800;
-	color: #B1663C
-}
-
-h1 > span {
-	font-family: 'Work Sans';
-	font-size:10px;
-	letter-spacing: 0.1em;
-}
-
-h2 {
-	font-family: 'Syne';
-	font-weight: 700;
-	font-size: 30px;
-	color: #1D6154
+	margin: 50px 0;
 }
 
 p {
 	color: #3D3D3D;
+}
+
+/*TITRES*/
+
+h1 {
+	display: flex;
+	flex-direction: column;
+	font-family: "Syne";
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C;
+}
+
+h1 > span {
+	font-family: "Work Sans";
+	font-size: 10px;
+	letter-spacing: 0.1em;
+}
+
+h2 {
+	font-family: "Syne";
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154;
+}
+
+/*HEADER / NAV / FOOTER*/
+
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0;
 }
 
 nav ul {
@@ -124,10 +119,11 @@ nav ul {
 	list-style-type: none;
 	color: black;
 }
+
 nav li a {
 	padding: 0 40px;
 	font-size: 1.2em;
-	color:black;
+	color: black;
 	text-decoration: none;
 }
 
@@ -135,14 +131,24 @@ nav li a:hover {
 	color: #B1663C;
 }
 
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em;
+}
+
+/*INTRODUCTION*/
+
 #introduction {
 	display: flex;
 	align-items: center;
 	margin-bottom: 140px;
 }
+
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -150,8 +156,9 @@ nav li a:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -159,6 +166,8 @@ nav li a:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+/*PORTFOLIO*/
 
 .StylePortfolio {
 	position: relative;
@@ -193,40 +202,71 @@ nav li a:hover {
 	color: #B1663C;
 }
 
+.filters {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2em;
+}
+
+.filters button {
+	font-family: "Syne";
+	font-weight: 700;
+	color: #1D6154;
+	background-color: transparent;
+	border: 1px solid #1D6154;
+	padding: 5px 18px;
+	margin: 5px;
+	cursor: pointer;
+	border-radius: 60px;
+}
+
+.filters button:hover {
+	background-color: #1D6154;
+	color: white;
+}
+
 #gallery {
-	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-template-columns: repeat(auto-fit, 305px);
+	gap: 20px;
+	justify-content: center;
+}
+
+#gallery figure {
+	width: 305px;
+	margin: 0;
 }
 
 #gallery img {
-	width: 100%;
+	display: block;
+	width: 305px;
+	height: 407px;
+	object-fit: cover;
 }
 
 #gallery figcaption {
+	margin-top: 7px;
 	color: #3D3D3D;
 }
 
-#GalleryModale img {
-	width: 100%;
-}
+/*CONTACT*/
 
 #contact {
 	width: 50%;
 	margin: auto;
 }
+
 #contact > * {
 	text-align: center;
-
 }
-#contact h2{
+
+#contact h2 {
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -237,6 +277,7 @@ nav li a:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 	color: #3D3D3D;
@@ -247,56 +288,31 @@ nav li a:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#formAddPics input {
-	font-family: 'Syne';
+/*BOUTONS / SUBMITS GLOBAUX*/
+
+input[type="submit"] {
+	font-family: "Syne";
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
-#FormAddPics input[type="submit"]:hover {
-	background-color: #8f8f8f;
-}
-
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em
-}
-
-.filters {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 2em;
-}
-
-.filters button {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: #1D6154;
-	background-color: transparent;
-	border: 1px solid #1D6154;
-	padding: 5px 18px;
-	margin: 5px;
-	cursor: pointer;
-	border-radius: 60px ;
-}	
-
-.filters button:hover {
-	background-color: #1D6154;
-	color: white;
-}
+/*PAGE LOGIN*/
 
 .style-form {
 	display: flex;
 	flex-direction: column;
 	width: 300px;
-	margin: 20px auto 20px auto;
-	
+	margin: 20px auto;
+}
+
+.style-form h2 {
+	text-align: center;
+	margin-bottom: 25px;
 }
 
 .style-form label {
@@ -312,18 +328,18 @@ footer nav ul {
 }
 
 .style-form input[type="submit"] {
-	font-family: 'Syne';
+	font-family: "Syne";
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 .style-form button {
-	font-family: 'Syne';
+	font-family: "Syne";
 	font-weight: 700;
 	color: #FFFFFF;
 	background-color: #1D6154;
@@ -331,12 +347,7 @@ footer nav ul {
 	padding: 10px 8px;
 	margin: 30px;
 	cursor: pointer;
-	border-radius: 60px ;
-}
-
-.style-form h2 {
-	text-align: center;
-	margin-bottom: 25px;
+	border-radius: 60px;
 }
 
 .style-form p a {
@@ -347,20 +358,60 @@ footer nav ul {
 	margin: 20px auto 0 auto;
 }
 
+#LoginErrorModal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 20;
+}
+
+.login-error-box {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	min-width: 300px;
+}
+
+.login-error-box p {
+	margin-bottom: 20px;
+	color: #3D3D3D;
+}
+
+.login-error-box button {
+	font-family: "Syne";
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	border: none;
+	border-radius: 60px;
+	padding: 10px 25px;
+	cursor: pointer;
+}
+
+/*MODE ÉDITION*/
 
 #EditionMode {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
+	padding: 25px 0;
 	background-color: #000000;
 	color: white;
-	font-family: 'Work Sans';
+	font-family: "Work Sans";
 	font-weight: 400;
-	padding: 25px 0;
-	z-index: 10;
 	text-align: center;
-	position: fixed;
+	z-index: 10;
 }
 
 #EditionMode span {
@@ -371,56 +422,50 @@ footer nav ul {
 #EditionMode i {
 	position: absolute;
 	left: 50%;
-	margin-left: -72px;
 	top: 50%;
+	margin-left: -72px;
 	transform: translateY(-50%);
 }
 
+/*OVERLAY*/
+
+#Overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 10;
+	display: none;
+}
+
+/*MODALE GÉNÉRALE*/
+
 #ModaleEdition {
-	position: relative;
-	overflow: auto;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	width: 50%;
 	max-width: 700px;
+	padding-top: 20px;
+	padding-bottom: 50px;
 	transform: translate(-50%, -50%);
+	overflow: auto;
 	background-color: white;
 	border-radius: 10px;
-	padding-bottom: 50px;
-	padding-top: 20px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	z-index: 11;
 	display: none;
-
-}	
+}
 
 #ModaleEdition h3 {
+	margin: 40px;
 	text-align: center;
-	font-family: 'Work Sans', 'Regular';
+	font-family: "Work Sans", "Regular";
 	font-weight: 400;
 	font-size: 30px;
-	margin: 40px;
 	color: black;
-}
-
-.modale-button-add {
-	display: flex;
-	justify-content: center;
-}
-
-#buttonAddPicture:hover {
-	background-color: #3e9283;
-}
-
-#ModaleGalleryView button {
-	font-family: 'Syne';
-	font-weight: 700;
-	color:#FFFFFF;
-	background-color: #1D6154;
-	border-radius: 60px;
-	padding: 8px 60px;
-	cursor: pointer;
 }
 
 .fa-xmark {
@@ -428,6 +473,34 @@ footer nav ul {
 	top: 20px;
 	right: 20px;
 	cursor: pointer;
+}
+
+.modale-separator {
+	width: 100%;
+	height: 1px;
+	margin: 70px 0 40px 0;
+	background-color: #B3B3B3;
+}
+
+/*MODALE - VUE GALERIE*/
+
+.modale-button-add {
+	display: flex;
+	justify-content: center;
+}
+
+#ModaleGalleryView button {
+	font-family: "Syne";
+	font-weight: 700;
+	color: #FFFFFF;
+	background-color: #1D6154;
+	border-radius: 60px;
+	padding: 8px 60px;
+	cursor: pointer;
+}
+
+#buttonAddPicture:hover {
+	background-color: #3e9283;
 }
 
 #GalleryModale {
@@ -442,35 +515,35 @@ footer nav ul {
 	width: 77px;
 }
 
+#gallery img {
+	width: 100%;
+	height: 407px;
+	object-fit: cover;
+}
+
 #GalleryModale .modal-trash {
-  	position: absolute;
+	position: absolute;
 	top: 8px;
 	right: 8px;
 	cursor: pointer;
-
 }
 
 .modal-trash {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #FFFFFF;
-	border-radius: 2px;
-	background-color: black;
-	height: 20px;
 	width: 20px;
+	height: 20px;
+	color: #FFFFFF;
+	background-color: black;
+	border-radius: 2px;
 }
 
 .modal-trash:hover {
 	background-color: #3e9283;
 }
 
-.modale-separator {
-	width: 100%;
-	height: 1px;
-	background-color: #B3B3B3;
-	margin: 70px 0 40px 0;
-}
+/*MODALE - VUE AJOUT PHOTO*/
 
 #ModaleForm {
 	position: relative;
@@ -484,72 +557,39 @@ footer nav ul {
 }
 
 #ModaleForm h3 {
+	margin: 40px 0 30px 0;
 	text-align: center;
-	font-family: 'Work Sans';
+	font-family: "Work Sans";
 	font-weight: 400;
 	font-size: 26px;
-	margin: 40px 0 30px 0;
 	color: black;
 }
 
 .rectangle-add-picture {
-	background-color: #E8F1F6;
-	height: 169px;
 	width: 420px;
-	border-radius: 3px;
+	height: 169px;
 	margin: 0 auto 30px auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: #E8F1F6;
+	border-radius: 3px;
 }
 
-.form-button-add {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 8px;
+#ModaleForm .fa-image {
+	font-size: 76px;
+	color: #B9C5CC;
 }
 
-#ModaleForm input[type="file"] {
-	font-family: 'Work Sans';
-	font-weight: 500;
-	color: #306685;
-	background-color: #CBD6DC;
-	border: none;
-	border-radius: 50px;
-	padding: 10px 30px;
-	cursor: pointer;
-}
-
-#ModaleForm form {
-	display: flex;
-	flex-direction: column;
-	width: 420px;
-	margin: 0 auto;
-}
-
-#ModaleForm input[type="text"] {
-	margin: 10px 0 10px 0;
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-#ModaleForm select[type="list"] {
-	margin: 10px 0 10px 0;
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-#ModaleForm form label {
-	color:#3D3D3D;
+#fileHelp {
+	color: #444444;
+	font-family: "Work Sans";
+	font-size: 14px;
 }
 
 .file-label {
-	font-family: 'Work Sans';
+	font-family: "Work Sans";
 	font-weight: 500;
 	color: #306685;
 	background-color: #CBD6DC;
@@ -567,37 +607,6 @@ footer nav ul {
 	display: none;
 }
 
-#ModaleForm input[type="submit"] {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #A7A7A7;
-	border: none;
-	border-radius: 60px;
-	width: 180px;
-	height: 36px;
-	margin: 30px auto 0 auto;
-	cursor: pointer;
-}
-
-#ModaleForm .modale-separator {
-	width: 420px;
-	height: 1px;
-	background-color: #B3B3B3;
-	margin: 20px auto 30px auto;
-}
-
-#ModaleForm .fa-image {
-	font-size: 76px;
-	color: #B9C5CC;
-}
-
-#fileHelp {
-	color: #444444;
-	font-family: 'Work Sans';
-	font-size: 14px;
-}
-
 #imagePreview {
 	display: none;
 	max-height: 169px;
@@ -609,16 +618,89 @@ footer nav ul {
 	display: block;
 }
 
+#ModaleForm form {
+	display: flex;
+	flex-direction: column;
+	width: 420px;
+	margin: 0 auto;
+}
+
+#ModaleForm form label {
+	color: #3D3D3D;
+}
+
+#ModaleForm input[type="text"] {
+	margin: 10px 0;
+	height: 50px;
+	font-size: 14px;
+	font-family: "Work Sans";
+	font-weight: 400;
+	color: #444444;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#ModaleForm select {
+	margin: 10px 0;
+	height: 50px;
+	font-size: 14px;
+	font-family: "Work Sans";
+	font-weight: 400;
+	color: #444444;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#ModaleForm input[type="submit"] {
+	width: 180px;
+	height: 36px;
+	margin: 30px auto 0 auto;
+	font-family: "Syne";
+	font-weight: 700;
+	color: white;
+	background-color: #A7A7A7;
+	border: none;
+	border-radius: 60px;
+	cursor: pointer;
+}
+
+#ModaleForm .modale-separator {
+	width: 420px;
+	height: 1px;
+	margin: 20px auto 30px auto;
+	background-color: #B3B3B3;
+}
+
+#FormAddPics input[type="submit"] {
+	font-family: "Syne";
+	font-weight: 700;
+	color: white;
+	background-color: #A7A7A7;
+	border: none;
+	border-radius: 60px;
+	width: 180px;
+	height: 36px;
+	margin: 30px auto 0 auto;
+	cursor: pointer;
+	text-align: center;
+}
+
+#FormAddPics input[type="submit"]:hover {
+	background-color: #8f8f8f;
+}
+
 #formAddError {
+	display: none;
+	margin-bottom: 15px;
+	padding: 20px;
+	text-align: center;
+	font-size: 26px;
 	color: #fdfdfd;
 	background-color: rgba(249, 3, 3, 0.63);
-	text-align: center;
-	padding: 20px;
-	font-size: 26px;
-	margin-bottom: 15px;
-	display: none;
 	border-radius: 15px;
 }
+
+/*FENÊTRE CONFIRMATION SUPPRESSION*/
 
 #DeleteConfirmBox {
 	display: none;
@@ -642,7 +724,7 @@ footer nav ul {
 }
 
 .confirm-actions button {
-	font-family: 'Syne';
+	font-family: "Syne";
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
