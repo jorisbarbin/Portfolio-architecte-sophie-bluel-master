@@ -37,7 +37,12 @@ function resetAddPhotoForm() {
 }
 
 fetch("http://localhost:5678/api/categories")
-    .then((response) => response.json())
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Erreur lors du chargement des catégories.");
+        }
+        return response.json();
+    })
     .then((data) => {
         dataFilters = data;
         remplirCategoriesSelect(dataFilters);
@@ -56,7 +61,7 @@ fetch("http://localhost:5678/api/categories")
             event.preventDefault()
             ModaleEdition.style.display = "block";
             Overlay.style.display = "block";
-            sessionStorage.setItem("modalOpen", "true");
+            
         })
         XmarkGalleryView.addEventListener("click", (event) => {
             event.preventDefault()
@@ -64,8 +69,6 @@ fetch("http://localhost:5678/api/categories")
             Overlay.style.display = "none";
             ModaleForm.style.display = "none";
             ModaleGalleryView.style.display = "block";
-            sessionStorage.removeItem("modalOpen");
-            console.log(event)
         })
         Overlay.addEventListener("click", (event) => {
             event.preventDefault()
@@ -74,7 +77,7 @@ fetch("http://localhost:5678/api/categories")
             Overlay.style.display = "none";
             ModaleForm.style.display = "none";
             ModaleGalleryView.style.display = "block";
-            sessionStorage.removeItem("modalOpen");
+            
         })
         buttonAddPicture.addEventListener("click", (event) => {
             event.preventDefault()
@@ -94,7 +97,7 @@ fetch("http://localhost:5678/api/categories")
             Overlay.style.display = "none";
             ModaleForm.style.display = "none";
             ModaleGalleryView.style.display = "block";
-            sessionStorage.removeItem("modalOpen");
+            
         })
         FormAddPics.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -130,7 +133,12 @@ fetch("http://localhost:5678/api/categories")
             },
             body: formData
         })
-        .then((response) => response.json())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Erreur lors de l'ajout du projet");
+            }
+            return response.json();
+        })
         .then((newWork) => {
             dataWorks.push(newWork);
             AfficherGallery(dataWorks);
@@ -143,11 +151,7 @@ fetch("http://localhost:5678/api/categories")
         console.error(error);
         });
         })
-        if (sessionStorage.getItem("modalOpen")) {
-            ModaleEdition.style.display = "block";
-            Overlay.style.display = "block";
-}
-        } else {
+    } else {
             AfficherFilters(dataFilters);
     }})
         .catch((error) => {

@@ -513,11 +513,13 @@ input[type="submit"] {
 #GalleryModale figure {
 	position: relative;
 	width: 77px;
+	margin: 0;
 }
 
-#gallery img {
-	width: 100%;
-	height: 407px;
+#GalleryModale img {
+	display: block;
+	width: 77px;
+	height: 102px;
 	object-fit: cover;
 }
 

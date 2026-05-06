@@ -13,7 +13,12 @@ let dataFilters = [];
 
 
 fetch("http://localhost:5678/api/works")
-    .then((response) => response.json())
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("Erreur lors du chargement des travaux.");
+        }
+        return response.json();
+    })
     .then((data) => {
         dataWorks = data;
         AfficherGallery(dataWorks);
