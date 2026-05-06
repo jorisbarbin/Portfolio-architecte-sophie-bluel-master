@@ -153,6 +153,7 @@ footer nav ul {
 	display: block;
 	margin: auto;
 	width: 80%;
+	max-width: 474px;
 }
 
 #introduction article {
@@ -165,6 +166,7 @@ footer nav ul {
 
 #introduction p {
 	margin-bottom: 0.5em;
+	max-width: 404px;
 }
 
 /*PORTFOLIO*/
