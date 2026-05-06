@@ -24,7 +24,17 @@ const fileHelp = document.querySelector("#fileHelp");
 const fileLabel = document.querySelector(".file-label");
 const formAddError = document.querySelector("#formAddError");
 
-
+function resetAddPhotoForm() {
+    FormAddPics.reset();
+    CategorieForm.selectedIndex = 0;
+    imagePreview.classList.remove("visible");
+    imagePreview.src = "";
+    IconImage.style.display = "block";
+    fileLabel.style.display = "block";
+    fileHelp.style.display = "block";
+    formAddError.textContent = "";
+    formAddError.style.display = "none";
+}
 
 fetch("http://localhost:5678/api/categories")
     .then((response) => response.json())
@@ -59,6 +69,7 @@ fetch("http://localhost:5678/api/categories")
         })
         Overlay.addEventListener("click", (event) => {
             event.preventDefault()
+            resetAddPhotoForm();
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
             ModaleForm.style.display = "none";
@@ -72,11 +83,13 @@ fetch("http://localhost:5678/api/categories")
         })
         ArrowModaleForm.addEventListener("click", (event) => {
             event.preventDefault()
+            resetAddPhotoForm();
             ModaleGalleryView.style.display = "block";
             ModaleForm.style.display = "none";
         })
         XmarkModaleForm.addEventListener("click", (event) => {
             event.preventDefault()
+            resetAddPhotoForm();
             ModaleEdition.style.display = "none";
             Overlay.style.display = "none";
             ModaleForm.style.display = "none";
@@ -124,14 +137,7 @@ fetch("http://localhost:5678/api/categories")
             AfficherGalleryModale(dataWorks);
             ModaleForm.style.display = "none";
             ModaleGalleryView.style.display = "block";
-            imageUpload.value = "";
-            titleForm.value = "";
-            CategorieForm.value = "";
-            imagePreview.classList.remove("visible");
-            imagePreview.src = "";
-            IconImage.style.display = "block";
-            fileLabel.style.display = "block";
-            fileHelp.style.display = "block";
+            resetAddPhotoForm();
         })
         .catch((error) => {
         console.error(error);
