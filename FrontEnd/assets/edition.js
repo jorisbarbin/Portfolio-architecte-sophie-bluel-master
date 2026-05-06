@@ -91,17 +91,17 @@ fetch("http://localhost:5678/api/categories")
             formAddError.style.display = "none";
             formAddError.textContent = "";
             if (!imageFile) {
-                formAddError.textContent = "Veuillez ajouter une image.";
+                formAddError.textContent = "Veuillez ajouter une image";
                 formAddError.style.display = "block";
                 return;
             }
             if (!titleValue) {
-                formAddError.textContent = "Veuillez renseigner un titre.";
+                formAddError.textContent = "Veuillez renseigner un titre";
                 formAddError.style.display = "block";
                 return;
             }
             if (!categoryValue) {
-                formAddError.textContent = "Veuillez choisir une catégorie.";
+                formAddError.textContent = "Veuillez choisir une catégorie";
                 formAddError.style.display = "block";
                 return;
             }
