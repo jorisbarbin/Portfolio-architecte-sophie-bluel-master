@@ -87,21 +87,38 @@ fetch("http://localhost:5678/api/works")
         });
 
         function AfficherFilters(dataFilters) {
-        let buttonAll = document.createElement("button");
-        buttonAll.textContent = "Tous";
-        buttonAll.setAttribute("data-category-id", "all");
-        filters.appendChild(buttonAll);
+            filters.innerHTML = "";
+            let buttonAll = document.createElement("button");
+            buttonAll.textContent = "Tous";
+            buttonAll.setAttribute("data-category-id", "all");
+            buttonAll.classList.add("active");
+            filters.appendChild(buttonAll);
 
-        for (let i = 0; i < dataFilters.length; i++) {
-            let button = document.createElement("button");
-            button.textContent = dataFilters[i].name;
-            button.setAttribute("data-category-id", dataFilters[i].id);
-            filters.appendChild(button);
+            function setActiveButton(buttonClicked) {
+                const allButtons = filters.querySelectorAll("button");
+                allButtons.forEach((button) => {
+                    button.classList.remove("active");
+                });
+                buttonClicked.classList.add("active");
+            }
 
-        button.addEventListener("click", () => {
-            let categoryId = button.getAttribute("data-category-id");
-            AfficherGallery(dataWorks.filter(work => work.categoryId == categoryId));})
-        }
+            buttonAll.addEventListener("click", () => {
+                AfficherGallery(dataWorks);
+                setActiveButton(buttonAll);
+            });
+
+            for (let i = 0; i < dataFilters.length; i++) {
+                let button = document.createElement("button");
+                button.textContent = dataFilters[i].name;
+                button.setAttribute("data-category-id", dataFilters[i].id);
+                filters.appendChild(button);
+
+                button.addEventListener("click", () => {
+                    let categoryId = button.getAttribute("data-category-id");
+                    AfficherGallery(dataWorks.filter(work => work.categoryId == categoryId));
+                    setActiveButton(button);
+                });
+            }
         
         buttonAll.addEventListener("click", () => {
             AfficherGallery(dataWorks);

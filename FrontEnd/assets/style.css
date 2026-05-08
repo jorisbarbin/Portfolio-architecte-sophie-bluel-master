@@ -222,6 +222,11 @@ footer nav ul {
 	border-radius: 60px;
 }
 
+.filters button.active {
+	background-color: #1D6154;
+	color: white;
+}
+
 .filters button:hover {
 	background-color: #1D6154;
 	color: white;

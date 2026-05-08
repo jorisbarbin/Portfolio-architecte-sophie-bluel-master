@@ -60,6 +60,7 @@ fetch("http://localhost:5678/api/categories")
             EditionMode.innerHTML = '<i class="fa-regular fa-pen-to-square"></i><span>Mode édition</span>';
             EditionMode.style.display = "block";
             ModifierBlock.style.display = "flex";
+            
             loginLink.addEventListener("click", (event) => {
             event.preventDefault();
             sessionStorage.removeItem("token");
